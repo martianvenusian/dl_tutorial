@@ -20,12 +20,14 @@ x = [34.552039 , 74.45411  , 80.987488 ,  3.458197 , 56.4778655, 26.98163  , 95.
 ```
 
  - Ma'lumotlar bilan ishlashda ma'lumotlarni tensorga o'tkazib olishimiz kerak bo'ladi. Va PyTorch yordamida ma'lumotlarni tensorda ifodalash quydagicha amalgan oshiriladi.
+ 
 ```python
 t_y = torch.tensor(y)
 t_x = torch.tensor(x)
 ```
 
  - Bu ma'lumotlarni tasvirda ko'ramiz. Bu esa ma'lumotlarni yana ham  yaxshiroq o'rganishizga yordam beradi.
+
 ```python
 fig = plt.figure(dpi=500)
 plt.xlabel("x label")
