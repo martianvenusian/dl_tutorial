@@ -20,7 +20,7 @@ x = [34.552039 , 74.45411  , 80.987488 ,  3.458197 , 56.4778655, 26.98163  , 95.
 ```
 
  - Ma'lumotlar bilan ishlashda ma'lumotlarni tensorga o'tkazib olishimiz kerak bo'ladi. Va PyTorch yordamida ma'lumotlarni tensorda ifodalash quydagicha amalgan oshiriladi.
- 
+
 ```python
 t_y = torch.tensor(y)
 t_x = torch.tensor(x)
@@ -36,7 +36,7 @@ plt.plot(t_x.numpy(), t_y.numpy(), 'o')
 plt.savefig("temp_data_plot.png", format="png")
 ```
 
-![Octocat](https://github.martianvenusian.io/dl_tutorial/blob/main/codes/tutorial_1/temp_data_plot.png)
+![data_plot](https://martianvenusian.github.io/dl_tutorial/blob/main/codes/tutorial_1/temp_data_plot.png)
 
 ### **2-QADAM:** Modelni tanlash
  - Ortiqcha izlanishlarsiz, yuqoridagi tasvirdan kelib chiqib bu muammoning yechimi ikki o'lchamli sodda model yotganini bilib olsak bo'ladi. Va *x* va *y* ma'lumotlar bir biri bilan chiziqli bog'liqlikka ega deb taxmin qilgan holda quydagi modelni tanlaymiz:
