@@ -36,7 +36,7 @@ plt.plot(t_x.numpy(), t_y.numpy(), 'o')
 plt.savefig("temp_data_plot.png", format="png")
 ```
 
-![data_plot](https://martianvenusian.github.io/dl_tutorial/blob/main/codes/tutorial_1/temp_data_plot.png)
+![data_plot](https://martianvenusian.github.io/dl_tutorial/images/temp_data_plot.png)
 
 ### **2-QADAM:** Modelni tanlash
  - Ortiqcha izlanishlarsiz, yuqoridagi tasvirdan kelib chiqib bu muammoning yechimi ikki o'lchamli sodda model yotganini bilib olsak bo'ladi. Va *x* va *y* ma'lumotlar bir biri bilan chiziqli bog'liqlikka ega deb taxmin qilgan holda quydagi modelni tanlaymiz:
