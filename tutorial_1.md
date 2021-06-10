@@ -10,7 +10,9 @@
  * Muammoning mohiyati va berilgan ma'lumot(data)larga qarab va madelni to'g'ri tanlash.
  * Tanlangan model parameterlarni shunday taxmin qilsinki toki yangi ma'lumotlar berilganda ham model yaxshi natijalarni bera oladigan bo'lsin.
 
+
 * * *
+
 
 ### **1-QADAM:** Ma'lumotlarni o'rganish
 
