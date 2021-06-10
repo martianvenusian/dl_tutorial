@@ -123,3 +123,25 @@ loss_rate_of_change_w
 # out
 # tensor(6852.5474)
 ```
+*w*dagi o'zgarish *loss*ning o'zgarishiga olib keladi. *w*ning qiymatini o'zgartirish *loss*ning o'zgarish darajasiga (*loss_rate_of_change*ga) to'g'ri proportsionaldir. Bu shuni anglatadiki, agar o'zgarish manfiy bo'lsa, biz *w*ni qiymatini oshirishimiz kerak, agar o'zgarish musbat bo'lsa unda *w*ning qiymatini kamaytirishimiz kerak va shundagina *loss* minimallashtirgan bo'lamiz. Lekin savol tug'iladi. *w*ning qiymatini qanchaga o'zgartirishimiz kerak? Odatda parameterlarni astalik bilan o'zgartirgan ma'qul, chunki o'zgarishlar tezligi (darajasi) *w* turli nuqtalarida keskin farq qilishi mumkin. Shuning uchun biz o'zgarish tezligini belgilovchi o'lchovini kiritishimiz kerak. Va bu o'lchovning turli nomlari bo'lib *machine learning*da bu odatda [***learning rate***] deb ataladi.
+
+Yuqoridagi amallardan foydalanib *w*ning qiymatini o'zgartiramiz:
+
+```python
+learning_rate = 1e-2
+w = w - learning_rate * loss_rate_of_change_w
+w
+# out
+# tensor(-136.0509)
+```
+
+Va bu jarayonlarni *b* bilan ham takrorlaymiz:
+
+```python
+loss_rate_of_change_b = (loss_fn(model(x, w, b + delta), y) - 
+                         loss_fn(model(x, w, b - delta), y)) / (2.0 * delta)
+b = b - learning_rate * loss_rate_of_change_b
+b
+# out
+# tensor(198.7000)
+```
