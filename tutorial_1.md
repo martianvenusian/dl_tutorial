@@ -14,6 +14,7 @@
 * * *
 
 
+<br/>
 ### **1-QADAM:** Ma'lumotlarni o'rganish
 
 Aytaylik, bizda ma'lum bir miqdorlarni ko'rsatadigan ***x*** va ***y*** ma'lumotlari bor. 
