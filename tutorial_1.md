@@ -41,7 +41,7 @@ plt.savefig("temp_data_plot.png", format="png")
 ### **2-QADAM:** Modelni tanlash
  - Ortiqcha izlanishlarsiz, yuqoridagi tasvirdan kelib chiqib bu muammoning yechimi ikki o'lchamli sodda model yotganini bilib olsak bo'ladi. Va *x* va *y* ma'lumotlar bir biri bilan chiziqli bog'liqlikka ega deb taxmin qilgan holda quydagi modelni tanlaymiz:
 
-### y = w * x + b
+ - ### y = w * x + b
 
  - Biz [`weight`]() va [`bias`]()dan kelib chiqib ***w*** va ***b*** haftlarini modelimiz uchun belgilab oldik. Bu ikkala atama chiziqli masshtablash (linear scaling) va o'zgarmas qo'shimchalar (additive constant)lar uchun odatiy atama bo'lib, bundan keyin biz bu atamalarga qayta qayta to'qnash kelamiz.
 
