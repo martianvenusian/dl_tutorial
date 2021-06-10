@@ -28,8 +28,8 @@ x = [34.552039 , 74.45411  , 80.987488 ,  3.458197 , 56.4778655, 26.98163  , 95.
 Ma'lumotlar bilan ishlashda ma'lumotlarni tensorga o'tkazib olishimiz kerak bo'ladi. Va PyTorch yordamida ma'lumotlarni tensorda ifodalash quydagicha amalgan oshiriladi.
 
 ```python
-t_y = torch.tensor(y)
-t_x = torch.tensor(x)
+y = torch.tensor(y)
+x = torch.tensor(x)
 ```
 
 Bu ma'lumotlarni tasvirda ko'ramiz. Bu esa ma'lumotlarni yana ham  yaxshiroq o'rganishizga yordam beradi.
@@ -38,7 +38,7 @@ Bu ma'lumotlarni tasvirda ko'ramiz. Bu esa ma'lumotlarni yana ham  yaxshiroq o'r
 fig = plt.figure(dpi=500)
 plt.xlabel("x label")
 plt.ylabel("y label")
-plt.plot(t_x.numpy(), t_y.numpy(), 'o')
+plt.plot(x.numpy(), y.numpy(), 'o')
 plt.savefig("temp_data_plot.png", format="png")
 ```
 
@@ -93,12 +93,20 @@ w = torch.ones(())
 b = torch.zeros(())
 
 yy = model(x, w, b)
+yy
+
+# Out:
+# tensor([ 34.5520,  74.4541,  80.9875,   3.4582,  56.4779,  26.9816,  95.7942, 106.2283,  61.1694,   1.0895,   8.9626])
 ```
 
 *Loss* hisoblaymiz:
 ```python
 loss = loss_fn(y, yy)
+loss
+# out 
+# tensor(3111.2595)
 ```
+
 
 
 ## **3-QADAM:** Lossni optimallashtirish
@@ -111,4 +119,7 @@ Mos parameterlarga nisbatan *Loss* funksiyani ***gradient descent*** algoritmi y
 ```python
 delta = 0.1
 loss_rate_of_change_w = (loss_fn(model(x, w + delta, b), y) - loss_fn(model(x, w - delta, b), y)) / (2.0 * delta)
+loss_rate_of_change_w
+# out
+# tensor(6852.5474)
 ```
