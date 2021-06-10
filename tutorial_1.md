@@ -15,7 +15,7 @@
 
 
 <br/>
-### **1-QADAM:** Ma'lumotlarni o'rganish
+## **1-QADAM:** Ma'lumotlarni o'rganish
 
 Aytaylik, bizda ma'lum bir miqdorlarni ko'rsatadigan ***x*** va ***y*** ma'lumotlari bor. 
 
@@ -43,7 +43,7 @@ plt.savefig("temp_data_plot.png", format="png")
 
 ![data_plot](https://martianvenusian.github.io/dl_tutorial/images/temp_data_plot.png)
 
-### **2-QADAM:** Modelni tanlash
+## **2-QADAM:** Modelni tanlash
 Ortiqcha izlanishlarsiz, yuqoridagi tasvirdan kelib chiqib bu muammoning yechimi ikki o'lchamli sodda model yotganini bilib olsak bo'ladi. Va *x* va *y* ma'lumotlar bir biri bilan chiziqli bog'liqlikka ega deb taxmin qilgan holda quydagi modelni tanlaymiz:
 
 ### y = w * x + b
