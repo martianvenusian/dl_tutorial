@@ -145,3 +145,4 @@ b
 # out
 # tensor(198.7000)
 ```
+Bu *gradient descent* uchun kerak bo'lgan parameterlarni yangilashning oddiy bosqichini ifodalaydi. Bu jarayonni takrorlash orqali parameterlar uchun eng maqbul qiymatga erishamiz va bu parameterlar berilgan data uchun *loss*ning minimal qiymatini hisoblash uchun xizmat qiladi.
