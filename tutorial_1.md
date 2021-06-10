@@ -60,18 +60,18 @@ Keling buni kengroq yoritaylik: Aytaylik bizda nomalum parameterlarga ega bo'lga
 
 [***Loss function***] - bu funksiya bo'lib oddiy bir raqamli qiymatni hisoblaydi va butun o'rgatish jarayoni aynan shu qiymatni minimallashtirishga qaratiladi. [***Lost***] qiymatni hisoblash model yordamida o'rgatiladigan namunalardan olingan taxminiy natija bilan haqiqiy namunalardan olingan natija o'rtasidagi farqni hisoblashdan iborat. Bizning holatimizda, bu farq ***yy - y*** ni hisoblashdan iboratdir.
 
-Bizning maqsadimiz ***yy*** va ***y*** o'rtasidagi munosabatni o'rganish va shuning uchun ***Lost***ning qiymati xar doim musbat bo'lishiga lozim. Buda bizda bir nechta tanlov bor va eng yaxshi tanlov bu ***|yy - y|*** yoki ***|yy - y|`^2***. 
+Bizning maqsadimiz ***yy*** va ***y*** o'rtasidagi munosabatni o'rganish va shuning uchun ***Lost***ning qiymati xar doim musbat bo'lishiga lozim. Buda bizda bir nechta tanlov bor va eng yaxshi tanlov bu ***`|yy - y|`*** yoki ***`|yy - y|^2`***. 
 
 Ikkala tanlov ham nolda aniq minimalga ega and taxminiy qiymat haqiqiy qiymatdan har ikki tarafga uzoqlashgan sari monotonik o'sadi. Chunki o'sish qiyaligi ham minimaldan monotonik uzoqlashadi. Ularning ikkalasi ham *qavariq* deb ataladi. Bizning model ham chiziqli bo'lgani sababli, ***w*** va ***b***larning funksiyasi sifatida ***lost*** ham qavariqdir. ***Lost*** model parameterlarining qavariq funksiyasi bo'lsan hollarda maxsus algoritmlar yordamida minimalni topishning juda samarali yo'llari mavjud. Lekin, bu yerdsa hozircha ancha sodda lekin umumiy bo'lgan usullardan foydalanib turamiz. Chunki buni biz qiziqayotgan ***neural network*** uchun qilamiz va bu yearda ***loss*** kiritiladigan na'munalarning qovariq funksiyasi bo'lmaydi.
 
-Bizning ikkala ***|yy - y|*** yoki ***|yy - y|`^2*** funksiyalarimiz orasida ikkinchi funksiya ancha samaraliroqdir. Chunki faqtni 2chi darajaga oshirish minimumga yaqinlashgan sari xatolarni yengilroq jazolaydi katta xatolarni esa kuchliroq jazolaydi. Odatda, ko'proq kichik xatolarga ega bo'lish bir nechta jiddiy xatolardan ko'ra yaxshiroqdir, va 2chi darajaga oshirilgan varqlar bu maqsadimizga muofiqdir.
+Bizning ikkala ***`|yy - y|`*** yoki ***`|yy - y|^2`*** funksiyalarimiz orasida ikkinchi funksiya ancha samaraliroqdir. Chunki faqtni 2chi darajaga oshirish minimumga yaqinlashgan sari xatolarni yengilroq jazolaydi katta xatolarni esa kuchliroq jazolaydi. Odatda, ko'proq kichik xatolarga ega bo'lish bir nechta jiddiy xatolardan ko'ra yaxshiroqdir, va 2chi darajaga oshirilgan varqlar bu maqsadimizga muofiqdir.
 
 
 Biz modelni tanladik va ***loss function*** haqida bilib oldik. Endi bu matematik tushincha va algoritmni PyTorch yordamida dasturlaymiz. 
 
 Modelning funksiyasini yaratamiz:
 
-```Python
+```python
 def model(x, w, b):
     return w * x + b
 ```
