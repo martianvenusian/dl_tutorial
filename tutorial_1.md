@@ -152,15 +152,14 @@ Yuqoridagi kabi *o'zgarish daraja*sini hisoblash juda ko'p parameterlarga ega bo
 <br/>
 
 ## **4-QADAM:** Gradient
+
 Biz ko'rib chiqayotgan model kabi ikki va undan ortiq parameteralarga ega modellar uchun lossning har bir parameteriga nisbatan uning hosilalarini hisoblash orqali bu muammoni hai qilish mumkin. Hisoblangan hosilalar esa hosila vektoriga joylashtiriladi. Va bu vectorlar `gradient` deb uritiladi.
 
 *Loss*ning parameterlariga nisbatan hosilasini hisoblash uchun, zanjir qoidasidan foydalanamiz.
 
 ##### d loss_fn / d w = (d loss_fn / d yy) * (d yy / d w)
 
-
 ## **5-QADAM:** Lossning parameterlariga nisbatan hosilasini hisoblash
-
 
 Bundan kelib chiqib, bizning *loss* funksiyamiz ***|yy - y|^2***ning ***yy*** ga nistababt hosilasi quydagicha hisoblaymiz:
 
