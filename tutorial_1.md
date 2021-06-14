@@ -1,4 +1,4 @@
-# Tutorial 1: Model tanlash va Lossni hisoblash 
+# Model tanlash va Lossni hisoblash 
 ## Bu bo'lim nimalarni o'rgatadi
  * Ma'lumot (data)lar bilan ishlash va ularni o'rganish
  * Madelni to'g'ri tanlash 
@@ -10,9 +10,9 @@
  * Muammoning mohiyati va berilgan ma'lumot(data)larga qarab va madelni to'g'ri tanlash.
  * Tanlangan model parameterlarni shunday taxmin qilsinki toki yangi ma'lumotlar berilganda ham model yaxshi natijalarni bera oladigan bo'lsin.
 
+<br/>
 
 * * *
-
 
 <br/>
 
@@ -48,7 +48,7 @@ plt.savefig("temp_data_plot.png", format="png")
 
 Ortiqcha izlanishlarsiz, yuqoridagi tasvirdan kelib chiqib bu muammoning yechimi ikki o'lchamli sodda model yotganini bilib olsak bo'ladi. Va *x* va *y* ma'lumotlar bir biri bilan chiziqli bog'liqlikka ega deb taxmin qilgan holda quydagi modelni tanlaymiz:
 
-### y = w * x + b
+#### y = w * x + b
 
 Biz [`weight`] va [`bias`]dan kelib chiqib ***w*** va ***b*** haftlarini modelimiz uchun belgilab oldik. Bu ikkala atama chiziqli masshtablash (linear scaling) va o'zgarmas qo'shimchalar (additive constant)lar uchun odatiy atama bo'lib, bundan keyin biz bu atamalarga qayta qayta to'qnash kelamiz.
 
@@ -109,7 +109,7 @@ loss
 
 
 
-## **3-QADAM:** Lossni optimallashtirish
+## **3-QADAM:** Lossning o'zgarish tezligi
 Yuqoridagi bo'limda biz `model`ni va `loss`ni hisobladik. Va nihoyat biz misolning eng muhim qismiga keldik: Qanday qilib ***loss***ni minimalga olib boradigan ***w*** va ***b***ni hisoblaymiz
 
 Mos parameterlarga nisbatan *Loss* funksiyani ***gradient descent*** algoritmi yordamida optimallashtiramiz. *Gradient descent* asligda juda sodda g'oyadir va millionlab parameterlarga ega katta *neural network* modellarida *gradient descent*ning darajasi ajablanarli darajada yuksaladi.
@@ -145,4 +145,68 @@ b
 # out
 # tensor(198.7000)
 ```
-Bu *gradient descent* uchun kerak bo'lgan parameterlarni yangilashning oddiy bosqichini ifodalaydi. Bu jarayonni takrorlash orqali parameterlar uchun eng maqbul qiymatga erishamiz va bu parameterlar berilgan data uchun *loss*ning minimal qiymatini hisoblash uchun xizmat qiladi.
+Bu *gradient descent* uchun kerak bo'lgan parameterlarni yangilashning oddiy bosqichini ifodalaydi. Bu jarayonni takrorlash orqali parameterlar uchun eng maqbul qiymatga erishamiz va bu parameterlar berilgan data uchun *loss*ning minimal qiymatini hisoblash uchun xizmat qiladi. Lekin biz hisoblagan *o'zgarish darajasi* juda xom hisoblashdir va hisoblashni yangilashimiz kerak.
+
+Yuqoridagi kabi *o'zgarish daraja*sini hisoblash juda ko'p parameterlarga ega bo'lgan modellar uchun yaxshi natija bermaydi. Qolaversa parameterlarni qo'shnisiga nisbatan qanchaga o'zgartirish kerakligini har doim ma'lum emas. Biz *delta*ni 0.1 ga teglashtirib oldik, lekin barchasi *w* va *b* ning funksiyasi bo'lgan *loss*ning shakliga bog'liq bo'ladi. Agar *loss* *delta*ga nisbatan tezroq o'zgarsa *loss* qaysi yo'nalish tomon kamayib borayotganini bilolmay qolamiz.
+
+<br/>
+
+## **4-QADAM:** Gradient
+Biz ko'rib chiqayotgan model kabi ikki va undan ortiq parameteralarga ega modellar uchun lossning har bir parameteriga nisbatan uning hosilalarini hisoblash orqali bu muammoni hai qilish mumkin. Hisoblangan hosilalar esa hosila vektoriga joylashtiriladi. Va bu vectorlar `gradient` deb uritiladi.
+
+*Loss*ning parameterlariga nisbatan hosilasini hisoblash uchun, zanjir qoidasidan foydalanamiz.
+
+##### d loss_fn / d w = (d loss_fn / d yy) * (d yy / d w)
+
+
+## **5-QADAM:** Lossning parameterlariga nisbatan hosilasini hisoblash
+
+
+Bundan kelib chiqib, bizning *loss* funksiyamiz ***|yy - y|^2***ning ***yy*** ga nistababt hosilasi quydagicha hisoblaymiz:
+
+#### d loss_fn / d yy = 2 (yy - y)
+
+Va *mean square loss* funksiyaning hosilasilasi esa:  
+
+#### d loss_fn / d yy = 2 (yy - y) / N
+
+Bu yerda N o'rtacha qiymatga nisbatan olingan hosiladir.
+
+Uning koddagi ko'rinishi esa qo'ydagicha yoziladi:
+
+```python
+def dloss_fn(yy, y):
+    dsq_diffs = 2 * (yy - y) / yy.size(0)
+    return dsq_dffs 
+```
+
+## **6-QADAM:** Modelning hosilasini hisoblash
+
+Model uchun hosilani hisoblaymiz. Bizning modilimiz quydagicha edi:
+
+#### yy = w * x + b  
+
+bundan kelib chiqib, modelning `w`ga nisbatan hosilasining kodi quyidagicha bo'ladi:
+
+```python
+def dmodel_dw(x, w, b):
+    return x
+```
+
+Modelning `b`ga nisbatan hosilasining kodi esa:
+
+```python
+def dmodel_db(x, w, b):
+    return 1.0
+```
+
+## **7-QADAM:** Gradient funksiyani ifodalash
+
+Hamma hisoblashlarni jamlaganda *loss*ning *w* va *b* ga nisbatan gradientini qaytaradigan funksiya quydagicha bo'ladi.
+
+```python
+def grad_fn(x, y, yy, w, b):
+    dloss_dyy = dloss_fn(yy,y)
+    dloss_dw = dloss_dyy * dmodel_dw(x, w, b)
+    dloss_db = dloss_dyy * dmodel_dw(x, w, b)
+    return torch.stack([dloss_dw.sum(), dloss_db.sum()])

@@ -1,1 +1,1 @@
-## [Tutorial 1](./tutorial_1.html)
+## [Tutorial 1](./tutorial_1.html): Model tanlash va Lossni hisoblash 
