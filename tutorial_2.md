@@ -1,8 +1,11 @@
-# Me'yorlashtirish (*Normalizing*)
-## Bu bo'lim nimalarni o'rgatadi
+# Me'yorlash (*Normalizing*)
+
+<br/>
+
+### Bu bo'lim nimani o'rgatadi
  * Ma'lumot (data)lari me'yorlash (*normalizing*)
 
-## Hal qilinishi kerak bo'lgan muammo
+### Hal qilinishi kerak bo'lgan muammo
  * Me'yorlash uslubi yordamida modelni optimalligini oshirish 
 
 <br/>
@@ -11,7 +14,7 @@
 
 <br/>
 
-## **1-QADAM:** Ma'lumotlarni me'yorlash
+### **1-QADAM:** Ma'lumotlarni me'yorlash
 
 Bizda ma'lum bir o'rgatishni amalga oshirdek deylik (o'tgan darslikka qarang). Bizning o'rganish jarayonimizda *loss*ning qiymadi juda sekin kamaya boshladi va oqibatda kamayishdan to'xtadi.
 ```python
@@ -152,7 +155,7 @@ Juda soz. Gradientning kamayish tomonga parameterlarni yangilab borganimizsari *
 
 <br/>
 
-## **2-QADAM:** Natijani tasvirda ifodalash
+### **2-QADAM:** Natijani tasvirda ifodalash
 
 Keling endi ma'lumotlarni tasvirda ko'ramiz. Bu *data  science* uchun har kim qilib ko'rishi kerak bo'lgan birinchi ish bo'lishi kerak. Har doim ma'lumotlarni tasvirda ko'rishga xarakat qiling:
 
