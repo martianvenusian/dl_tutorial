@@ -1,2 +1,2 @@
-## [1-Dars:](./tutorial_1.html): Model tanlash va Lossni hisoblash
-## [2-Dars:](./tutorial_2.html): Me'yorlash (*Normalizing*)
+## 1-Dars: [Model tanlash va Lossni hisoblash](./tutorial_1.html)
+## 2-Dars: [Me'yorlash (*Normalizing*)](./tutorial_2.html)
