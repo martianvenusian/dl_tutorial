@@ -159,9 +159,11 @@ Biz ko'rib chiqayotgan model kabi ikki va undan ortiq parameteralarga ega modell
 
 ##### d loss_fn / d w = (d loss_fn / d yy) * (d yy / d w)
 
+<br/>
+
 ## **5-QADAM:** Lossning parameterlariga nisbatan hosilasini hisoblash
 
-Bundan kelib chiqib, bizning *loss* funksiyamiz ***|yy - y|^2***ning ***yy*** ga nistababt hosilasi quydagicha hisoblaymiz:
+Bundan kelib chiqib, bizning *loss* funksiyamiz `***|yy - y|^2***`ning `***yy***` ga nistababt hosilasi quydagicha hisoblaymiz:
 
 #### d loss_fn / d yy = 2 (yy - y)
 
@@ -178,6 +180,8 @@ def dloss_fn(yy, y):
     dsq_diffs = 2 * (yy - y) / yy.size(0)
     return dsq_dffs 
 ```
+
+<br/>
 
 ## **6-QADAM:** Modelning hosilasini hisoblash
 
@@ -199,6 +203,8 @@ def dmodel_db(x, w, b):
     return 1.0
 ```
 
+<br/>
+
 ## **7-QADAM:** Gradient funksiyani ifodalash
 
 Hamma hisoblashlarni jamlaganda *loss*ning *w* va *b* ga nisbatan gradientini qaytaradigan funksiya quydagicha bo'ladi.
@@ -209,3 +215,4 @@ def grad_fn(x, y, yy, w, b):
     dloss_dw = dloss_dyy * dmodel_dw(x, w, b)
     dloss_db = dloss_dyy * dmodel_dw(x, w, b)
     return torch.stack([dloss_dw.sum(), dloss_db.sum()])
+```
