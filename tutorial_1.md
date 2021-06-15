@@ -216,3 +216,87 @@ def grad_fn(x, y, yy, w, b):
     dloss_db = dloss_dyy * dmodel_dw(x, w, b)
     return torch.stack([dloss_dw.sum(), dloss_db.sum()])
 ```
+
+<br/>
+
+## **8-QADAM:** Modelni to'yintirish uchun takrorlashlarni amalga oshirish
+
+Parameterlarimizni optimallashtirish uchun hamma narsani tayyorladik. Boshlang'ich nuqtada parameterlarni qiymatini taxminiy belgilab, jaroyonlarni takrorlash orqali bu parameterlarning qiymatini yangilab boramiz. Bu jarayon biz belgilagan takrorlanishlar soniga yetguncha yoki *w* va *b* ortiq yangilanmay qolgunga qadar davom etadi. Aslida jarayonni to'xtatishning bir necha usullari mavjud bo'lib biz hozircha aniq bir son bilan takrorlanishlar sonini belgalaymiz.
+
+Shu o'rinda yangi bir atamani kiritamiz. Agar bizda mavjud bo'lgan o'rgatilishi kerak bo'lgan namunalarning (dataning) hammasini to'liq o'rgatsak bu bir ***`ipoch`*** deyiladi.
+
+To'liq o'rgatishni takrorlash quyidagicha bo'ladi:
+
+```python
+def training_loop(n_epochs, learning_rate, params, x, y):
+    for epoch in range(1, n_epochs + 1):
+        w, b = params
+        yy = model(x, w, b)
+        loss = loss_fn(yy, y)                
+        grad = grad_fn(x, y, yy, w, b)        
+        params = params - learning_rate * grad
+        print('Epoch %d, Loss %f' % (epoch, float(loss)))
+        
+    return params
+```
+
+Endi, bu o'rgatishlar takrorlashni ishga tushiramiz:
+
+```python
+training_loop(
+    n_epochs = 100,
+    learning_rate = 1e-2,
+    params = torch.tensor([1.0, 0.0]),
+    x = x,
+    y = y
+    )
+
+# Epoch 1, Loss 3111.259521
+# Epoch 2, Loss 17721820.000000
+# Epoch 3, Loss 100946837504.000000
+# Epoch 4, Loss 575014583664640.000000
+# Epoch 5, Loss 3275405556726104064.000000
+# Epoch 6, Loss 18657403323979527094272.000000
+# Epoch 7, Loss 106276534878960075617075200.000000
+# Epoch 8, Loss 605373722075598621564743974912.000000
+# Epoch 9, Loss 3448337686731194597843880986542080.000000
+# Epoch 10, Loss 19642460283487853146960269110142828544.000000
+# Epoch 11, Loss inf
+# Epoch 12, Loss inf
+# Epoch 13, Loss inf
+# Epoch 14, Loss inf
+# Epoch 15, Loss inf
+# Epoch 16, Loss inf
+# Epoch 17, Loss inf
+# Epoch 18, Loss inf
+# Epoch 19, Loss inf
+# Epoch 20, Loss inf
+# Epoch 21, Loss inf
+# Epoch 22, Loss nan
+# Epoch 23, Loss nan    
+```
+
+Ho'sh hozir nima bo'ldi. Bizning bizning o'rgatishlarimiz tom manoda portladi, yani *loss* kamayish o'rniga aksincha checksizlikka qaram o'sib bordi. Bundan aniq ko'rinib turibdiki, parameterlar yangilanganda juda katta sonlarga qabul qilyapti natijada yangilangan parameterning qiymatlari haddan tashqari orqaga siljib kengayib boryapti. Bu holatda bizning optimallashtirish jarayonimiz beqarordir. Biz parameterlarni iloji boricha kechik sonlar bilan yangilab borishimiz kerak. Ho'sh buni qanday qilib amalga oshiramiz? Bu juda oson. Shunchaki o'rganish darajasini (***learning_rate***ni)  kichikroq tanlasak yetarli. *learning_rate bu o'rgatish yaxshi amalga oshmayotgan vaqtda odatda o'zgartiradigan narsalarimizdan bittasi. O'zgarish tarajasini odatda tebranish tartibiga qarab o'zgartiriladi. Ho'sh biz 1e-3 yoki 1e-4 oraligida o'zgartirib ko'rsak bo'ladi.
+
+Leking 1e-4ga o'zgartirb natija qanaqa bo'lishini tekshrib ko'ramiz.
+
+```python
+training_loop(
+    n_epochs = 100,
+    learning_rate = 1e-4,
+    params = torch.tensor([1.0, 0.0]),
+    x = x,
+    y = y
+    )
+# Epoch 1, Loss 3111.259521
+# Epoch 2, Loss 173.008987
+# Epoch 3, Loss 10.498895
+# Epoch 4, Loss 1.533096
+# Epoch 5, Loss 1.043715
+# Epoch 6, Loss 1.018247
+# Epoch 7, Loss 1.017218
+# Epoch 8, Loss 1.017250
+# Epoch 9, Loss 1.017273
+# Epoch 10, Loss 1.017280
+```
+Juda soz. O'rgatish jarayoni ko'ngildagidek barqaror. Lekin boshqa muammo bor: yangilanayotgan parameterlar juda kichik, shuning uchun *loss* juda astalik bilan kamayyapti va oqibatda u kamayishdan to'xtaydi. Bu haqda keyingi darsleklarimizda o'rganamiz
