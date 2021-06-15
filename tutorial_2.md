@@ -172,4 +172,4 @@ Yuqorida *`*params`* shaklida parameterlarimizni modelga uzatdik. parameterlarni
 
 ![data_plot](https://martianvenusian.github.io/dl_tutorial/codes/tutorial_1/dl_ch1t2_plot01.png)
 
-Tasvirdan ko'rinib turibdiki bizning ma'lumotlar uchun chiqizli model eng maqbul madelga o'xshaydi.
+Tasvirdan hulosa qiladigan bo'lsak, ma'lumotlarimiz uchun chiqizli model eng maqbul madelga o'xshaydi.
