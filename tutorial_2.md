@@ -146,6 +146,10 @@ params = training_loop(
 
 Juda soz. Gradientning kamayish tomonga parameterlarni yangilab borganimizsari *loss*ning qiymati ham pasayib bordi. *loss*ning qiymati nolga yaqinlashyapti lekin aniq nolga teng emas. Bu takrorlanishlar yetarli bo'lmaganini anglatishi mumkin yoki ma'lumot(data)ning nuqtalari aniq bir chiziqda yotmasligini anglatadi. Kutganimizdek bizning ma'lumotlarimiz mukammal aniqlikka ega emas, yoki ma'lumotlarni o'qishda ba'zi xatoliklarga yo'l qo'yilgan. 
 
+#### ESLATMA
+> Bu yerda me'yorlash modelni o'rgatishda ancha yordam berdi, lekin bunaqa model uchun parameterlarni meyorlashga xojat yo'q deb aytishingiz mumkin. Bu mutlaqo to'g'ri. Yuqoridagi muammo parameterlar bilan ishlashda bir qancha yo'llaridan foydalanib yechish mumkin bo'lgan darajada kichik muammodir.
+> Lekin, katta va ancha murakkab muammolarda modelning optimalligi oshirishda me'yorlash (normalization) oson va samarali (albatta, hali qiluvchuv emas) vosita hisoblanadi.
+
 <br/>
 
 ## **2-QADAM:** Natijani tasvirda ifodalash
@@ -164,4 +168,8 @@ plt.plot(x.numpy(), y.numpy(), 'o')
 plt.savefig("dl_ch1t2_plot01.png", format="png")
 ```
 
+Yuqorida *`*params`* shaklida parameterlarimizni modelga uzatdik. parameterlarni bunday shaklda uzatish Pythonda *argument unpacking* deb nomlanadi. Python dasturlash tilida *list* yoki *tuple*lar bilan odatda shunday ishlanadi. Lekin PyTorchda ham tensorni ham shunday uzatish mumkin, shunda tensor o'lcham bo'ylab yoyiladi. Hullas bu yerda ***model(x, *params)*** ***model(x, params[0], params[1])***ga tengdir.
+
 ![data_plot](https://martianvenusian.github.io/dl_tutorial/codes/tutorial_1/dl_ch1t2_plot01.png)
+
+Tasvirdan ko'rinib turibdiki bizning ma'lumotlar uchun chiqizli model eng maqbul madelga o'xshaydi.
