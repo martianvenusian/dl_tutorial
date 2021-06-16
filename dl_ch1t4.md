@@ -164,7 +164,7 @@ training_loop(
     n_epochs = 5000,
     optimizer = optimizer,
     params = params,
-    x = x,
+    x = x, # x ning me'yorlashmagan qiymati (non-normalized)
     y = y)
 
 # Epoch 500, Loss 0.265097
@@ -181,3 +181,5 @@ training_loop(
 # Out [12]
 # tensor([0.0841, 0.5997], requires_grad=True)
 ```
+
+Bizning kodimizning o'rgatishni takrorlovchi qismida faqatgina optimizer qulay moslashuvchi emas. Modelga e'tibor beraylik. Bir xil ma'lumot va bir xil *loss* bilan neural networkni o'rgatish uchun bizning yagona qiladigan ishimiz *model* funksiyasini o'zgartirish kifoya.
