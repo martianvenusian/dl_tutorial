@@ -182,4 +182,4 @@ training_loop(
 # tensor([0.0841, 0.5997], requires_grad=True)
 ```
 
-Bizning kodimizning o'rgatishni takrorlovchi qismida faqatgina optimizer qulay moslashuvchi emas. Modelga e'tibor beraylik. Bir xil ma'lumot va bir xil *loss* bilan neural networkni o'rgatish uchun bizning yagona qiladigan ishimiz *model* funksiyasini o'zgartirish kifoya.
+Kodning o'rgatishni takrorlovchi qismida faqatgina *optimizer*gina moslashuvchi emas. *Model*ga e'tibor beraylik. Bir xil *data* va bir xil *loss* bilan *neural network*ni o'rgatish uchun bizning yagona qiladigan ishimiz *model* funksiyasini o'zgartirish kifoya.
